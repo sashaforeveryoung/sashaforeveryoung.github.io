@@ -282,6 +282,69 @@
             border: none;
         }
 
+        /* Video Buttons */
+        .video-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .video-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #D2B48C, #A52A2A);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 500;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(165, 42, 42, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .video-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(165, 42, 42, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .video-btn:hover::before {
+            left: 100%;
+        }
+
+        .video-btn i {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+
+        .access-note {
+            background: #FFF8E1;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #D2B48C;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
         /* Instructions */
         .instructions {
             background: linear-gradient(135deg, #F5E6D3 0%, #E8D5C4 100%);
@@ -434,6 +497,16 @@
             .memory-content {
                 min-height: auto;
             }
+            
+            .video-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .video-btn {
+                width: 100%;
+                max-width: 250px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -462,29 +535,30 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1 class="floating">HAPPY BIRTHDAY</h1>
             <p>АХАХАХАХАХАХАХХА смотри это видео ОБЯЗАТЕЛЬНО и спускаяся ниже, там тоже интересно!</p>
-            <p>к сожалению видосы с ютуба(по ссылке доступ) поэтому смотреть надо с впн</p>
-            <!-- Главное YouTube видео -->
-            <iframe class="hero-video" 
-                    src="https://youtu.be/zvM2WsZ-N2k?si=M19jkRSWAbKQ9YUM" 
-                    title="Главное видео"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-            </iframe>
+            
+            <div class="access-note">
+                <p><i class="fas fa-exclamation-circle"></i> К сожалению, видео доступны только по ссылке (нужен VPN для YouTube)</p>
+                <p>Извини за неудобства, но это единственный способ вставить видео сюда!</p>
+            </div>
+            
+            <div class="video-buttons">
+                <a href="https://youtu.be/zvM2WsZ-N2k?si=M19jkRSWAbKQ9YUM" class="video-btn" target="_blank">
+                    <i class="fas fa-play-circle"></i> Главное видео
+                </a>
+            </div>
         </div>
     </section>
-    <!-- Memories Section -->
     <section class="memories" id="memories">
         <div class="container">
             <h2 class="section-title">Наши воспоминания</h2>
             <div class="memory-grid">
-                <!-- Memory 1 -->
                 <div class="memory-item">
                     <h3 class="memory-title">Детство</h3>
                     <div class="memory-content">
@@ -492,16 +566,13 @@
                         <p>о господи, когда ты была на стадии Саши-сенсея ты все равно была максимальной поддержкой и будь то даже карантин проведенный у бабушки с дедушкой, ты все равно находила время, которое удиляла мне.</p>
                         <p>Это круто даже с той стороны, что ты помогла мне видеть себя взрослым даже в детском периоде, типо когда мы снимали влоги я видел себя ема каким взрослыми блогером, а если бы я в то время просто играл в машинки, то я кроме как ребенком никаким другим бы себя и не видел</p>
                     </div>
-                    <!-- YouTube видео 1 -->
-                    <iframe class="memory-video"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                            title="Воспоминание 1"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
+                    
+                    <div class="video-buttons">
+                        <a href="https://youtu.be/zvM2WsZ-N2k?si=M19jkRSWAbKQ9YUM" class="video-btn" target="_blank">
+                            <i class="fas fa-play-circle"></i> Видео 1
+                        </a>
+                    </div>
                 </div>
-
-                <!-- Memory 2 -->
                 <div class="memory-item">
                     <h3 class="memory-title">Подростковые годы</h3>
                     <div class="memory-content">
@@ -509,16 +580,13 @@
                         <p>Ваще мой подростковый период еще даже не думает заканчиваться, но опять же. Тут мало можно чего сказать, на самом деле грустно, что уже будучи чуть более взрослыми у нас просто не времени на более масштабные ссоры из-за пустяков, поэтому мы взаимодействуем более позитивно и уже реально сплетничаем прям уууу кринж. но с другой стороны опять же это кайф, что с разницей в 4 года у нас есть общие темы для общения, за которые можно общаться бесконечно.</p>
                         <p>Вновь прикрепляю видео уже менее давней давности, но все же) </p>
                     </div>
-                    <!-- YouTube видео 2 -->
-                    <iframe class="memory-video"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                            title="Воспоминание 2"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
+                    
+                    <div class="video-buttons">
+                        <a href="https://www.youtube.com/embed/dQw4w9WgXcQ" class="video-btn" target="_blank">
+                            <i class="fas fa-play-circle"></i> Видео 2
+                        </a>
+                    </div>
                 </div>
-
-                <!-- Memory 4 -->
                 <div class="memory-item">
                     <h3 class="memory-title">Приквел</h3>
                     <div class="memory-content">
@@ -528,8 +596,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Password Section -->
     <section class="password-section" id="password-section">
         <div class="container">
             <h2 class="section-title">Секретный раздел(приятный бонус)</h2>
@@ -552,8 +618,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Secret Section -->
     <section class="secret-section" id="secret-section">
         <div class="container">
             <div class="secret-content">
@@ -565,20 +629,16 @@
                 <p>с тобой реально можно просто часами общаться, сплетничать и просто забывать о существовании времени(собственно так и прошли молодые годы(настя была права))</p>
                 <p>я очень рад, что мне посчастливилось быть твоим братом и прожить такой огромный перечень событий с тобой</p>
                 
-                <!-- Секретное YouTube видео -->
-                <iframe class="secret-video"
-                        src="https://www.youtube.com/embed/DLpBgYI564Y"
-                        title="Секретное видео"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                </iframe>
+                <div class="video-buttons">
+                    <a href="https://youtube.com/shorts/DLpBgYI564Y?si=QMkBezucwEwTYVVU" class="video-btn" target="_blank">
+                        <i class="fas fa-play-circle"></i> Секретное видео
+                    </a>
+                </div>
                 
                 <h2>forever young. love you. ЛЕША</h2>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <h3>С любовью <span class="heart">♥</span></h3>
@@ -587,33 +647,22 @@
     </footer>
 
     <script>
-        // Проверка пароля
         document.getElementById('submit-btn').addEventListener('click', function() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('error-message');
-            
-            // Проверяем правильность введенных данных
             if (email === 'alexinka2007@gmail.com' && password === 'susharazdvatri') {
-                // Показываем секретный раздел
                 document.getElementById('password-section').style.display = 'none';
                 document.getElementById('secret-section').style.display = 'block';
-                
-                // Прокручиваем к секретному разделу
                 document.getElementById('secret-section').scrollIntoView({ behavior: 'smooth' });
             } else {
-                // Показываем сообщение об ошибке
                 errorMessage.style.display = 'block';
-                
-                // Анимация ошибки
                 errorMessage.style.animation = 'none';
                 setTimeout(() => {
                     errorMessage.style.animation = 'fadeIn 0.5s ease';
                 }, 10);
             }
         });
-
-        // Анимация появления элементов при скролле
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -626,19 +675,13 @@
                 }
             });
         }, observerOptions);
-
-        // Наблюдаем за элементами с памятью
         document.querySelectorAll('.memory-item').forEach(item => {
             item.style.opacity = '0';
             observer.observe(item);
         });
-
-        // Наблюдаем за формой ввода пароля
         const passwordContainer = document.querySelector('.password-container');
         passwordContainer.style.opacity = '0';
         observer.observe(passwordContainer);
-
-        // Оптимизация для мобильных устройств
         document.addEventListener('touchstart', function() {}, {passive: true});
     </script>
 </body>
